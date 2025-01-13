@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satya Narayan Goit</title>
+
+    <!-- swiper css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+
+    <!-- box icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+</head>
+
+<body>
+
+    <!-- header design -->
+    <header class="header">
+        <a href="#" class="logo">Satya</a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+        <nav class="navbar">
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <!-- <div class="bx bx-moon" id="darkMode-icon"></div> -->
+    </header>
+
+    <!-- home section design -->
+    <section class="home" id="home">
+        <div class="home-content">
+            <h3>Hello, I am</h3>
+            <h1>Satya Narayan Goit</h1>
+            <p>
+                I'm a frontend developer who loves to create beautiful and functional web apps
+                for people who want to make a difference in the world.
+            </p>
+            <p>I'm a student from Nepal Engineering College, Currently pursuing my bachelor's degree in Computer Engineering.</p>
+    
+            <div class="social-media">
+                <a href="https://www.facebook.com/satya.goit/" target="_blank"><i class='bx bxl-facebook'></i></a>
+                <a href="https://www.instagram.com/goitsatya/profilecard/?igsh=MWV3emo1YjMxZjdsMA==" target="_blank"><i class='bx bxl-instagram-alt'></i></a>
+                <!-- <a href="https://youtube.com/@tech.abhi578?si=_VX2BrBLmZmfNnLE" target="_blank"><i class='bx bxl-youtube'></i></a> 
+                 -->
+                <a href="https://github.com/satya019386" target="_blank"><i class='bx bxl-github'></i></a>
+            </div>
+    
+            <a href="https://www.linkedin.com/in/satya-narayan-goit-5022b6301/" target="_blank" class="btn">View LinkedIn</a>
+        </div>
+    
+        <div class="profession-container">
+            <div class="profession-box">
+                <div class="profession" style="--i:0;">
+                    <i class='bx bx-code-alt'></i>
+                    <h3>Web Developer</h3>
+                </div>
+                <div class="profession" style="--i:1;">
+                    <i class='bx bx-camera'></i>
+                    <h3>Photographer</h3>
+                </div>
+                <div class="profession" style="--i:2;">
+                    <i class='bx bx-code'></i>
+                    <h3>Graphics Designer</h3>
+                </div>
+                <div class="profession" style="--i:3;">
+                    <i class='bx bx-game'></i>
+                    <h3>Solution Creator</h3>
+                </div>
+    
+                <div class="circle"></div>
+            </div>
+    
+            <div class="overlay"></div>
+        </div>
+    
+        <div class="home-img">
+            <!-- <img src="assets\images\satya.png" alt=""> -->
+        </div>
+        
+    </section>
+    
+
+<!-- About Section Design -->
+<section class="about" id="about">
+    <!-- <div class="about-img">
+        <img src="assets/images/satya.png" alt="Satya Narayan Goit">
+    </div> -->
+
+    <div class="about-content">
+        <h2 class="heading">About <span>Me</span></h2>
+        <h3>
+            Hi there, welcome to my website! I'm Satya,  
+            a passionate web developer who thrives on exploring the latest technologies  
+            and crafting creative solutions through code!
+        </h3>
+        <p>
+            This website is my personal space where I share exciting insights, practical tips,  
+            and thought-provoking ideas about web development that inspire and energize me.
+        </p>
+
+        <!-- Experience Section -->
+        <div class="experience-section">
+            <h3 class="title experience-title">Experience</h3>
+            <div class="underline"></div>
+            <div class="experience-box">
+                <p><strong>Position Title:</strong> Web Developer</p>
+                <p><strong>Role Type:</strong> Internship</p>
+                <p>
+                    <strong>Company:</strong> 
+                    <a href="https://codsoft.in/" target="_blank" class="company-link">CodSoft</a>
+                </p>
+                <p><strong>Location:</strong> Remote</p>
+                <p><strong>Date Joined:</strong> 1-Dec-2024</p>
+                <p><strong>Total Experience:</strong> <span id="experience-count">0</span> Days</p>
+            </div>
+        </div>
+
+        <!-- Projects Completed Section -->
+        <div class="projects-section">
+            <h3 class="title project-title">Number of Projects Completed Till Now</h3>
+            <div class="underline"></div>
+            <div class="project-circle">
+                <div class="circle">
+                    <div class="number" id="project-count">0</div>
+                    <!-- <p>Projects Completed</p> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- JavaScript for Dynamic Experience and Project Counter -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Dynamic Project Counter
+        const projectCountElement = document.getElementById('project-count');
+        let projectCount = 0;
+        const targetProjects = 4; // Replace with your total projects
+
+        const projectInterval = setInterval(() => {
+            if (projectCount < targetProjects) {
+                projectCount++;
+                projectCountElement.textContent = projectCount;
+            } else {
+                clearInterval(projectInterval);
+            }
+        }, 50);
+
+        // Dynamic Total Experience Counter
+        const dateJoined = new Date('2024-12-01');
+        const experienceCountElement = document.getElementById('experience-count');
+
+        function calculateExperience() {
+            const today = new Date();
+            const difference = Math.floor((today - dateJoined) / (1000 * 60 * 60 * 24)); // Days
+            experienceCountElement.textContent = difference;
+        }
+        calculateExperience();
+    });
+</script>
+
+<!-- CSS for Experience and Projects Sections -->
+<style>
+    /* Common Styling */
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f4f4f4;
+        box-sizing: border-box;
+    }
+
+    /* About Section */
+    .about-content {
+        padding: 2rem;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-img img {
+        width: 100%;
+        max-width: 300px;
+        border-radius: 8px;
+        margin-bottom: 1.5rem;
+    }
+
+    .heading {
+        font-size: 4.5rem;
+        text-align: center;
+        color: #333;
+        margin-bottom: 1.5rem;
+    }
+
+    .heading span {
+        color: #4facfe;
+    }
+
+    /* Experience Section Styling */
+    .experience-section {
+        margin-top: 2rem;
+        background-color: #4facfe; /* Blue background for experience */
+        border-radius: 12px;
+        padding: 2rem;
+        color: #fff;
+    }
+
+    .experience-title {
+        font-size: 6.8rem; /* Increased font size */
+        font-weight: bold;
+        color: hsl(66, 100%, 64%); /* Tomato red color for experience title */
+        margin-bottom: 0.5rem;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    .underline {
+        width: 70%;
+        margin: 0.5rem auto;
+        height: 3px;
+        background-color: #fff;
+    }
+
+    .experience-box {
+        text-align: center;
+        font-size: 3.6rem; /* Increased font size */
+    }
+
+    .experience-box p {
+        font-size: 2 rem; /* Increased font size for readability */
+        line-height: 1.8;
+    }
+
+    .company-link {
+        font-weight: bold;
+        color: #fff;
+        text-decoration: underline;
+    }
+
+    /* Projects Section Styling */
+    .projects-section {
+        margin-top: 3rem;
+        background-color: #1900fe; /* Light cyan for projects */
+        border-radius: 12px;
+        padding: 2rem;
+        color: #fff;
+    }
+
+    .project-title {
+        font-size: 2.8rem; /* Increased font size */
+        font-weight: bold;
+        color: hsl(66, 100%, 64%); /* Lime green color for projects title */
+        margin-bottom: 0.5rem;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    .project-circle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .circle {
+        width: 180px;
+        height: 180px;
+        border-radius: 60%;
+        border: 10px solid #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        animation: spin 5s linear infinite;
+        background: linear-gradient(135deg, #4facfe, #00f2fe);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .circle .number {
+        font-size: 3.5rem; /* Increased number font size */
+        font-weight: bold;
+        color: #fff;
+    }
+
+    .circle p {
+        position: absolute;
+        bottom: -30px;
+        font-size: 1.5rem;
+        color: #fff;
+        text-align: center;
+    }
+
+    /* Spin Animation */
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    /* Responsive Design */
+    @media screen and (max-width: 768px) {
+        .about-content {
+            padding: 1.5rem;
+        }
+
+        .heading {
+            font-size: 2rem;
+        }
+
+        .experience-section, .projects-section {
+            padding: 1.5rem;
+        }
+
+        .circle {
+            width: 140px;
+            height: 140px;
+        }
+
+        .circle .number {
+            font-size: 2.5rem;
+        }
+
+        .experience-box p {
+            font-size: 1.2rem;
+        }
+
+        .experience-title {
+            font-size: 2.2rem;
+        }
+
+        .project-title {
+            font-size: 2.2rem;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .about-img img {
+            max-width: 250px;
+        }
+
+        .heading {
+            font-size: 1.8rem;
+        }
+
+        .title {
+            font-size: 1.6rem;
+        }
+
+        .experience-box p {
+            font-size: 1.1rem;
+        }
+
+        .circle {
+            width: 120px;
+            height: 120px;
+        }
+
+        .circle .number {
+            font-size: 2rem;
+        }
+    }
+</style>
+
+
+
+    <!-- services section design -->
+    <section class="services" id="services">
+        <h2 class="heading">My <span>Services</span></h2>
+        <div class="services-container">
+            <div class="services-box">
+                <i class='bx bx-code-alt'></i>
+                <h3>Web Development</h3>
+                <p>
+                    I specialize in crafting responsive and dynamic web applications designed to meet diverse client needs.  
+                    From intuitive designs to robust functionality, I create seamless online experiences that enhance usability,  
+                    elevate brands, and ensure every interaction leaves a lasting impression.
+                </p>
+                <a href="#" class="btn">Read More</a>
+            </div>
+            <div class="services-box">
+                <i class='bx bxs-paint'></i>
+                <h3>Graphic Design</h3>
+                <p>
+                    I transform ideas into impactful visuals through creative graphic design.  
+                    Whether it’s branding, marketing materials, or unique illustrations, I deliver designs that captivate, communicate,  
+                    and connect with your audience while leaving a memorable mark on your brand.
+                </p>
+                <a href="#" class="btn">Read More</a>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- portfolio section design -->
+    <section class="portfolio" id="portfolio">
+        <h2 class="heading">Latest <span>Projects</span></h2>
+    
+        <div class="portfolio-container">
+            
+            <div class="portfolio-box">
+                <img src="assets\images\skin.jpg" style="height: 325px;" alt="Skin Disease Detection & Remedies Suggestions">
+    
+                <div class="portfolio-layer">
+                    <h4>Skin Disease Detection & Remedies Suggestions</h4>
+                    <p>Developed web & Mobile App for real-time Skin Disease Detection & Remedies Suggestions.</p>
+                    <a href="#"><i class='bx bx-link-external'></i></a>
+                </div>
+            </div>
+    
+            <div class="portfolio-box">
+                <img src="assets\images\artguider.jpeg" style="height: 325px;" alt="Art Guider">
+    
+                <div class="portfolio-layer">
+                    <h4>Art Guider</h4>
+                    <p>Developed To familiar easy guidance tool for the art and
+                        drawing.
+                        To provide package of drawing tool and
+                        environment to share their work.</p>
+                    <a href="#"><i class='bx bx-link-external'></i></a>
+                </div>
+            </div>
+    
+            <div class="portfolio-box">
+                <img src="assets\images\gchord.png" style="height: 325px;" alt="G-Tab">
+    
+                <div class="portfolio-layer">
+                    <h4>G-tabs & Chords</h4>
+                    <p>Developed To provide song lyrics, tabs and its chords at a time.
+                        To familiarize songs in nepali language for those
+                        people who don't understand English languages</p>
+                    <a href="#"><i class='bx bx-link-external'></i></a>
+                </div>
+            </div>
+    
+        </div>
+    </section>
+    
+
+
+    <!-- testimonial design -->
+    <div class="testimonial-container">
+        <h2 class="heading">My <span>Portfolio</span></h2>
+    
+        <div class="testimonial-wrapper">
+            <div class="testimonial-box mySwiper">
+                <div class="testimonial-content swiper-wrapper">
+                    <div class="testimonial-slide swiper-slide">
+                        <img src="assets\images\satya.png.png" alt="Satya Narayan Goit">
+                        <h3>Satya Narayan Goit</h3>
+                        <p>
+                            Passionate web developer skilled in crafting dynamic, responsive web applications.  
+                            I thrive on solving challenges and delivering efficient, high-quality solutions while constantly exploring new technologies.
+                        </p>
+                        
+                        <div class="resume-options">
+                            <a href="assets\resume\Satya-Goit-cv.pdf" class="resume-button" target="_blank">Preview My Resume</a>
+                            <a href="assets\resume\Satya-Goit-cv.pdf" class="resume-button" download>Download My Resume</a>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- contact section design -->
+    <!-- Contact Section Design -->
+<section class="contact" id="contact">
+    <h2 class="heading">Contact <span>Me!</span></h2>
+
+    <form id="contact-form">
+        <div class="input-box">
+            <input type="text" id="name" placeholder="Full Name" required>
+            <input type="email" id="email" placeholder="Email Address" required>
+        </div>
+        <div class="input-box">
+            <input type="number" id="mobile" placeholder="Mobile Number" required>
+            <input type="text" id="subject" placeholder="Email Subject" required>
+        </div>
+        <textarea id="message" cols="30" rows="10" placeholder="Your Message" required></textarea>
+        <input type="submit" value="Send Message" class="btn">
+    </form>
+</section>
+
+    <!-- EmailJS Script -->
+<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+<script>
+    // Initialize EmailJS with your user ID
+    emailjs.init("service_nc06ir9");  // Replace with your actual user_id from EmailJS
+
+    // Handle form submission
+    document.getElementById('contact-form').addEventListener('submit', function (event) {
+        event.preventDefault();  // Prevent default form submission
+
+        // Get the form data
+        var name = document.getElementById('name').value;
+        var email = document.getElementById('email').value;
+        var mobile = document.getElementById('mobile').value;
+        var subject = document.getElementById('subject').value;
+        var message = document.getElementById('message').value;
+
+        // Prepare the template parameters
+        var templateParams = {
+            from_name: name,
+            from_email: email,
+            from_mobile: mobile,
+            subject: subject,
+            message: message,
+        };
+
+        // Send the email using the EmailJS service
+        emailjs.send("service_nc06ir9", "template_143v7le", templateParams)
+            .then(function(response) {
+                alert("Message sent successfully!");
+                document.getElementById('contact-form').reset();  // Reset form after submission
+            }, function(error) {
+                alert("Failed to send message. Please try again later.");
+            });
+    });
+</script>
+
+
+    <!-- footer design -->
+    <footer class="footer">
+        <div class="footer-text">
+            <p>Copyright &copy; 2024 | All Rights Reserved.</p>
+        </div>
+
+        <div class="footer-iconTop">
+            <a href="#home"><i class='bx bx-up-arrow-alt'></i></a>
+        </div>
+    </footer>
+
+
+    <!-- scroll reveal -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!-- swiper js -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+    <!-- custom js -->
+    <script src="main.js"></script>
+</body>
+
+</html>
